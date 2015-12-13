@@ -27,7 +27,7 @@ function handleRequest(req, res) {
       res.statusCode = 200;
       /// Write out Students currently in the database
       res.write("<h1>It's working</h1>");
-      res.write("<p><strong>" + JSON.stringify(data) + "</p></strong>");
+      res.write("<p><strong>" + JSON.stringify(data) + "</strong></p>");
       res.end();
     });
 
@@ -42,7 +42,7 @@ function handleRequest(req, res) {
       // create new student and return a response to make sure that it was inserted into the db without errors
       console.log(doc);
       res.write("<h1>" + req.url + "</h1>");
-      res.write("<p><strong>" + JSON.stringify(doc) + " Has been inserted </p></strong>");
+      res.write("<p><strong>" + JSON.stringify(doc) + " Has been inserted </strong></p>");
       res.end();
     });
 
@@ -52,14 +52,14 @@ function handleRequest(req, res) {
       console.log(doc);
       if (err || doc === null) {
         res.write("<h1>" + req.url + "</h1>");
-        res.write("<p><strong>" + JSON.stringify(doc) + "Doesn't Exist! </p></strong>");
+        res.write("<p><strong>" + JSON.stringify(doc) + "Doesn't Exist! </strong></p>");
         res.end();
       } else {
         student.remove(queryObj, function(err, doc) {
           res.statusCode = 200;
           console.log(doc);
           res.write("<h1>" + req.url + "</h1>");
-          res.write("<p><strong>" + JSON.stringify(doc) + "Has been removed </p></strong>");
+          res.write("<p><strong>" + JSON.stringify(doc) + "Has been removed </strong></p>");
           res.end();
         });
       }
@@ -76,7 +76,7 @@ function handleRequest(req, res) {
     student.findOne( nameObj , function(err, doc) {
       if (err || doc === null) {
         res.write("<h1>" + req.url + "</h1>");
-        res.write("<p><strong>" + JSON.stringify(doc) + "Doesn't Exist! </p></strong>");
+        res.write("<p><strong>" + JSON.stringify(doc) + "Doesn't Exist! </strong></p>");
         res.end();
       } else {
         res.write("<h1>" + JSON.stringify(doc) + "</h1>");
@@ -86,7 +86,7 @@ function handleRequest(req, res) {
           res.statusCode = 200;
           console.log(doc2);
           res.write("<h1>" + req.url + "</h1>");
-          res.write("<p><strong>" + JSON.stringify(doc2) + "</p></strong>");
+          res.write("<p><strong>" + JSON.stringify(doc2) + "</strong></p>");
           res.end();
         });
       }
@@ -98,7 +98,7 @@ function handleRequest(req, res) {
     res.write('<h1>This is not a page</h1>');
     urlObj = url.parse(req.url);
     //  console.log(urlObj);
-    res.write("<p><strong>" + JSON.stringify(urlObj) + "</p></strong>");
+    res.write("<p><strong>" + JSON.stringify(urlObj) + "</strong></p>");
     res.end();
   }
 }
